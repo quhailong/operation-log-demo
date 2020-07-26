@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.quhailong.operation.dao.ExceptionOperationLogDao">
+  <resultMap id="BaseResultMap" type="top.quhailong.operation.entity.ExceptionOperationLogDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="exception_id" jdbcType="VARCHAR" property="exceptionId" />
+    <result column="exception_name" jdbcType="VARCHAR" property="exceptionName" />
+    <result column="exception_message" jdbcType="VARCHAR" property="exceptionMessage" />
+    <result column="exception_request_param" jdbcType="VARCHAR" property="exceptionRequestParam" />
+    <result column="operation_uri" jdbcType="VARCHAR" property="operationUri" />
+    <result column="operation_method" jdbcType="VARCHAR" property="operationMethod" />
+    <result column="operation_ip" jdbcType="VARCHAR" property="operationIp" />
+    <result column="operation_create_time" jdbcType="TIMESTAMP" property="operationCreateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, exception_id, exception_name, exception_message, exception_request_param, operation_uri, 
+    operation_method, operation_ip, operation_create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from exception_operation_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from exception_operation_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.quhailong.operation.entity.ExceptionOperationLogDO">
+    insert into exception_operation_log (id, exception_id, exception_name, 
+      exception_message, exception_request_param, 
+      operation_uri, operation_method, operation_ip, 
+      operation_create_time)
+    values (#{id,jdbcType=INTEGER}, #{exceptionId,jdbcType=VARCHAR}, #{exceptionName,jdbcType=VARCHAR}, 
+      #{exceptionMessage,jdbcType=VARCHAR}, #{exceptionRequestParam,jdbcType=VARCHAR}, 
+      #{operationUri,jdbcType=VARCHAR}, #{operationMethod,jdbcType=VARCHAR}, #{operationIp,jdbcType=VARCHAR}, 
+      #{operationCreateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.quhailong.operation.entity.ExceptionOperationLogDO">
+    insert into exception_operation_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="exceptionId != null">
+        exception_id,
+      </if>
+      <if test="exceptionName != null">
+        exception_name,
+      </if>
+      <if test="exceptionMessage != null">
+        exception_message,
+      </if>
+      <if test="exceptionRequestParam != null">
+        exception_request_param,
+      </if>
+      <if test="operationUri != null">
+        operation_uri,
+      </if>
+      <if test="operationMethod != null">
+        operation_method,
+      </if>
+      <if test="operationIp != null">
+        operation_ip,
+      </if>
+      <if test="operationCreateTime != null">
+        operation_create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="exceptionId != null">
+        #{exceptionId,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionName != null">
+        #{exceptionName,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionMessage != null">
+        #{exceptionMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionRequestParam != null">
+        #{exceptionRequestParam,jdbcType=VARCHAR},
+      </if>
+      <if test="operationUri != null">
+        #{operationUri,jdbcType=VARCHAR},
+      </if>
+      <if test="operationMethod != null">
+        #{operationMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="operationIp != null">
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operationCreateTime != null">
+        #{operationCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.quhailong.operation.entity.ExceptionOperationLogDO">
+    update exception_operation_log
+    <set>
+      <if test="exceptionId != null">
+        exception_id = #{exceptionId,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionName != null">
+        exception_name = #{exceptionName,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionMessage != null">
+        exception_message = #{exceptionMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionRequestParam != null">
+        exception_request_param = #{exceptionRequestParam,jdbcType=VARCHAR},
+      </if>
+      <if test="operationUri != null">
+        operation_uri = #{operationUri,jdbcType=VARCHAR},
+      </if>
+      <if test="operationMethod != null">
+        operation_method = #{operationMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="operationIp != null">
+        operation_ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operationCreateTime != null">
+        operation_create_time = #{operationCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.quhailong.operation.entity.ExceptionOperationLogDO">
+    update exception_operation_log
+    set exception_id = #{exceptionId,jdbcType=VARCHAR},
+      exception_name = #{exceptionName,jdbcType=VARCHAR},
+      exception_message = #{exceptionMessage,jdbcType=VARCHAR},
+      exception_request_param = #{exceptionRequestParam,jdbcType=VARCHAR},
+      operation_uri = #{operationUri,jdbcType=VARCHAR},
+      operation_method = #{operationMethod,jdbcType=VARCHAR},
+      operation_ip = #{operationIp,jdbcType=VARCHAR},
+      operation_create_time = #{operationCreateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

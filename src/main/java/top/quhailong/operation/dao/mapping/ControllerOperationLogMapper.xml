@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.quhailong.operation.dao.ControllerOperationLogDao">
+  <resultMap id="BaseResultMap" type="top.quhailong.operation.entity.ControllerOperationLogDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="operation_id" jdbcType="VARCHAR" property="operationId" />
+    <result column="operation_module" jdbcType="VARCHAR" property="operationModule" />
+    <result column="operation_type" jdbcType="VARCHAR" property="operationType" />
+    <result column="operation_desc" jdbcType="VARCHAR" property="operationDesc" />
+    <result column="operation_request_param" jdbcType="VARCHAR" property="operationRequestParam" />
+    <result column="operation_response_param" jdbcType="VARCHAR" property="operationResponseParam" />
+    <result column="operation_content" jdbcType="VARCHAR" property="operationContent" />
+    <result column="operation_uri" jdbcType="VARCHAR" property="operationUri" />
+    <result column="operation_method" jdbcType="VARCHAR" property="operationMethod" />
+    <result column="operation_ip" jdbcType="VARCHAR" property="operationIp" />
+    <result column="operation_create_time" jdbcType="TIMESTAMP" property="operationCreateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, operation_id, operation_module, operation_type, operation_desc, operation_request_param, 
+    operation_response_param, operation_content, operation_uri, operation_method, operation_ip, 
+    operation_create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from controller_operation_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from controller_operation_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.quhailong.operation.entity.ControllerOperationLogDO">
+    insert into controller_operation_log (id, operation_id, operation_module, 
+      operation_type, operation_desc, operation_request_param, 
+      operation_response_param, operation_content, 
+      operation_uri, operation_method, operation_ip, 
+      operation_create_time)
+    values (#{id,jdbcType=INTEGER}, #{operationId,jdbcType=VARCHAR}, #{operationModule,jdbcType=VARCHAR}, 
+      #{operationType,jdbcType=VARCHAR}, #{operationDesc,jdbcType=VARCHAR}, #{operationRequestParam,jdbcType=VARCHAR}, 
+      #{operationResponseParam,jdbcType=VARCHAR}, #{operationContent,jdbcType=VARCHAR}, 
+      #{operationUri,jdbcType=VARCHAR}, #{operationMethod,jdbcType=VARCHAR}, #{operationIp,jdbcType=VARCHAR}, 
+      #{operationCreateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.quhailong.operation.entity.ControllerOperationLogDO">
+    insert into controller_operation_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="operationId != null">
+        operation_id,
+      </if>
+      <if test="operationModule != null">
+        operation_module,
+      </if>
+      <if test="operationType != null">
+        operation_type,
+      </if>
+      <if test="operationDesc != null">
+        operation_desc,
+      </if>
+      <if test="operationRequestParam != null">
+        operation_request_param,
+      </if>
+      <if test="operationResponseParam != null">
+        operation_response_param,
+      </if>
+      <if test="operationContent != null">
+        operation_content,
+      </if>
+      <if test="operationUri != null">
+        operation_uri,
+      </if>
+      <if test="operationMethod != null">
+        operation_method,
+      </if>
+      <if test="operationIp != null">
+        operation_ip,
+      </if>
+      <if test="operationCreateTime != null">
+        operation_create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="operationId != null">
+        #{operationId,jdbcType=VARCHAR},
+      </if>
+      <if test="operationModule != null">
+        #{operationModule,jdbcType=VARCHAR},
+      </if>
+      <if test="operationType != null">
+        #{operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDesc != null">
+        #{operationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="operationRequestParam != null">
+        #{operationRequestParam,jdbcType=VARCHAR},
+      </if>
+      <if test="operationResponseParam != null">
+        #{operationResponseParam,jdbcType=VARCHAR},
+      </if>
+      <if test="operationContent != null">
+        #{operationContent,jdbcType=VARCHAR},
+      </if>
+      <if test="operationUri != null">
+        #{operationUri,jdbcType=VARCHAR},
+      </if>
+      <if test="operationMethod != null">
+        #{operationMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="operationIp != null">
+        #{operationIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operationCreateTime != null">
+        #{operationCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.quhailong.operation.entity.ControllerOperationLogDO">
+    update controller_operation_log
+    <set>
+      <if test="operationId != null">
+        operation_id = #{operationId,jdbcType=VARCHAR},
+      </if>
+      <if test="operationModule != null">
+        operation_module = #{operationModule,jdbcType=VARCHAR},
+      </if>
+      <if test="operationType != null">
+        operation_type = #{operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="operationDesc != null">
+        operation_desc = #{operationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="operationRequestParam != null">
+        operation_request_param = #{operationRequestParam,jdbcType=VARCHAR},
+      </if>
+      <if test="operationResponseParam != null">
+        operation_response_param = #{operationResponseParam,jdbcType=VARCHAR},
+      </if>
+      <if test="operationContent != null">
+        operation_content = #{operationContent,jdbcType=VARCHAR},
+      </if>
+      <if test="operationUri != null">
+        operation_uri = #{operationUri,jdbcType=VARCHAR},
+      </if>
+      <if test="operationMethod != null">
+        operation_method = #{operationMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="operationIp != null">
+        operation_ip = #{operationIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operationCreateTime != null">
+        operation_create_time = #{operationCreateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.quhailong.operation.entity.ControllerOperationLogDO">
+    update controller_operation_log
+    set operation_id = #{operationId,jdbcType=VARCHAR},
+      operation_module = #{operationModule,jdbcType=VARCHAR},
+      operation_type = #{operationType,jdbcType=VARCHAR},
+      operation_desc = #{operationDesc,jdbcType=VARCHAR},
+      operation_request_param = #{operationRequestParam,jdbcType=VARCHAR},
+      operation_response_param = #{operationResponseParam,jdbcType=VARCHAR},
+      operation_content = #{operationContent,jdbcType=VARCHAR},
+      operation_uri = #{operationUri,jdbcType=VARCHAR},
+      operation_method = #{operationMethod,jdbcType=VARCHAR},
+      operation_ip = #{operationIp,jdbcType=VARCHAR},
+      operation_create_time = #{operationCreateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
