@@ -28,7 +28,7 @@ public class UserController {
 
     @RequestMapping(value = "user", method = RequestMethod.PUT)
     @OperationLog(operationDesc = "更新用户", operationModule = "user", operationType = "update")
-    public String updateUserInfo(User user) throws InterruptedException {
+    public String updateUserInfo(User user) {
         userService.updateUserHandle(user);
         return "aaa";
     }

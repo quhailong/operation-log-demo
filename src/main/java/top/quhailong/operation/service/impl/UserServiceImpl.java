@@ -15,13 +15,12 @@ public class UserServiceImpl implements IUserService {
     private UserInfoDao userInfoDao;
 
     @Override
-    public void updateUserHandle(User user) throws InterruptedException {
+    public void updateUserHandle(User user) {
         MDC.put("logContent", "用户更新");
         UserInfoDO userInfoDO = userInfoDao.selectByPrimaryKey(user.getId());
         userInfoDO.setUserName(user.getUserName());
         userInfoDO.setUserAge(user.getAge());
         userInfoDao.updateByPrimaryKey(userInfoDO);
-        Thread.sleep(5000);
     }
 
     @Override

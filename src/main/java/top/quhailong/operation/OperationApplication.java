@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
  */
 @SpringBootApplication
 @MapperScan("top.quhailong.operation.dao")
-@EnableAsync
 public class OperationApplication {
 
     public static void main(String[] args) {
